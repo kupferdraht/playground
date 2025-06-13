@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#ffb300">
+    <title>The Floor is Lava</title>
+  <script>
+  function loadAssets() {
+    // Entferne evtl. alte Styles/Skripte
+    document.querySelectorAll('link[data-dyn],script[data-dyn]').forEach(e => e.remove());
+    var w = window.innerWidth;
+    var css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.setAttribute('data-dyn','');
+    var js = document.createElement('script');
+    js.setAttribute('data-dyn','');
+    js.defer = true;
+    if(w <= 1191) {
+      css.href = 'game.css';
+      js.src = 'game.js';
+    } else {
+      css.href = 'game copy.css';
+      js.src = 'game copy.js';
+    }
+    document.head.appendChild(css);
+    js.onload = function() {
+      // Loader ausblenden
+      var loader = document.getElementById('loader');
+      if(loader) loader.style.display = 'none';
+    };
+    document.body.appendChild(js);
+  }
+  window.addEventListener('DOMContentLoaded', loadAssets);
+  window.addEventListener('resize', function() {
+    if (
+      (window.innerWidth <= 1191 && !document.querySelector('link[href="game.css"]')) ||
+      (window.innerWidth > 1191 && !document.querySelector('link[href="game copy.css"]'))
+    ) {
+      location.reload();
+    }
+  });
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="loader" style="
+  position:fixed;left:0;top:0;width:100vw;height:100vh;
+  background:#ff7c01;z-index:9999;display:flex;align-items:center;justify-content:center;
+  font-size:2em;font-weight:bold;letter-spacing:2px;">
+  Wird geladen...
+</div>
+  <header>
+    <a class="logo" href="../index.html" target="_blank" >The Floor is Lava</a>
+    <nav>
+      <div class="nav-links">
+        <a id="homeBtn" onclick="showStartScreen()" aria-label="Home">Home</a>
+<a  onclick="showHelpOverlay()">Hilfe?</a>
+        <a href="../index.html" target="_blank">andere games</a>
+      </div>
+    </nav>
+  </header>
+  <canvas id="canvas" width="1000" height="500"></canvas>
+  <nav id="mobileModeBar"></nav>
+  <nav id="mobileNav">
+    <button onclick="goHome()" onclick="showStartScreen()" aria-label="Home">🏠</button>
+<button onclick="showHelpOverlay()" aria-label="Hilfe">❓</button>
+    <a href="../index.html">games</a>
+  </nav>
+  <script>
+const bgSounds = [
+  "../sound/backgroundsound1.mp3",
+  "../sound/backgroundsound2.mp3",
+  "../sound/backgroundsound3.mp3",
+  "../sound/backgroundsound4.mp3",
+  "../sound/backgroundsound5.mp3"
+];
+
+function playRandomBgSound() {
+  const audio = document.getElementById("bgAudio");
+  const random = Math.floor(Math.random() * bgSounds.length);
+  audio.src = bgSounds[random];
+  audio.play();
+  // Wenn der Sound zu Ende ist, spiele einen neuen zufälligen ab
+  audio.onended = playRandomBgSound;
+}
+
+// Starte beim Laden
+window.addEventListener("DOMContentLoaded", () => {
+  playRandomBgSound();
+});
+</script>
+<audio id="bgAudio" autoplay loop></audio>
+<audio id="startSound" src="../sound/start.mp3"></audio>
+<audio id="winSound" src="../sound/win.mp3"></audio>
+<audio id="loseSound" src="../sound/lose.mp3"></audio>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('../service-worker.js');
+  });
+}
+</script>
+</body>
+</html>

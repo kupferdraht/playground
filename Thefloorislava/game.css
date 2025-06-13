@@ -1,0 +1,492 @@
+
+/*HANDY CSS VERSION!!*/
+
+body{
+    margin:0;
+    padding:0;
+    background-color: rgba(255, 145, 0, 0.959);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    height: 56px;
+    background: 
+        linear-gradient(
+            to bottom, 
+            rgba(255, 167, 3, 0.95) 0%, 
+            rgba(255, 167, 3, 0.25) 80%, 
+            rgba(255, 167, 3, 0) 100%
+        ),
+        linear-gradient(190deg, #1976d2 40%, #ffa703 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 16px #0004;
+    padding: 0 32px;
+    font-size: 1.2em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header .logo {
+    font-weight: bold;
+    font-size: 1.6em;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #ff2d00 0%, #ff9800 40%, #ffd600 70%, #ff2d00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow:
+        0 2px 8px #ff3300e1,
+        0 0px 2px #b71c1ccc,
+        0 0px 16px #ff6600a9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    margin-left: 32px;
+}
+
+header .nav-links {
+    display: flex;
+    gap: 24px;
+}
+
+header .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.08em;
+    letter-spacing: 1px;
+    padding: 4px 14px;
+    border-radius: 7px;
+    background: linear-gradient(90deg, #ff2d00 0%, #ff9800 40%, #ffd600 70%, #ff2d00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    text-shadow:
+        0 2px 12px #ff3300e1,
+        0 0px 2px #b71c1ccc,
+        0 0px 18px #ff6600a9;
+    -webkit-text-stroke: 1.2px #111;
+    
+    box-shadow: 0 2px 18px #ff980055;
+    transition: 
+        text-shadow 0.18s,
+        background 0.18s,
+        box-shadow 0.18s;
+}
+
+header .nav-links a:hover, 
+header .nav-links a:focus {
+    background: linear-gradient(90deg, #ffd600 0%, #ff9800 50%, #ff2d00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    text-shadow:
+        0 4px 24px #ffd600cc,
+        0 0px 12px #ff9800cc,
+        0 0px 32px #ff2d00cc;
+    -webkit-text-stroke: 1.4px #000;
+    
+    outline: none;
+    box-shadow: 0 4px 32px #ff980099, 0 0px 32px #ffd60077;
+}
+
+#mobileNav {
+    display: none;
+}
+
+#mobileModeBar {
+    display: none;
+}
+
+/* --- Responsive ab 1191px --- */
+@media (max-width: 1191px) {
+    header, #modeBar, #rightBar, #timerBar {
+        display: none !important;
+    }
+    #mobileNav {
+        display: flex !important;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 60px;
+        background: linear-gradient(90deg, #ff9800 0%, #ff2d00 100%);
+        box-shadow: 0 -2px 16px #0006;
+        z-index: 4002;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0;
+        gap: 0;
+    }
+    #mobileNav button, a {
+        flex: 1 1 0;
+        height: 100%;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 2em;
+        font-weight: bold;
+        border-radius: 0;
+        transition: background 0.15s;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    #mobileNav button:active,
+    #mobileNav button:focus, a:active, a:focus {
+        background: rgba(255,255,255,0.08);
+        outline: none;
+    }
+    #mobileModeBar {
+        display: flex !important;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 60px;
+        height: 54px;
+        background: linear-gradient(90deg, #ff9800 0%, #ff2d00 100%);
+        box-shadow: 0 -2px 16px #0006;
+        z-index: 4001;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 0 2vw;
+        gap: 0;
+    }
+    #mobileModeBar button, #mobileModeBar .infoBtn {
+        flex: 1 1 0;
+        margin: 0 2px;
+        height: 40px;
+        background: #fffde7;
+        color: #ff2d00;
+        border: 2px solid #ff9800;
+        border-radius: 10px;
+        font-size: 1em;
+        font-weight: bold;
+        box-shadow: 0 2px 8px #0002;
+       
+        transition: background 0.15s, color 0.15s;
+        min-width: 0;
+        padding: 0 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    #mobileModeBar button.active {
+        background: #ff9800;
+        color: #fff;
+        border-color: #ff2d00;
+    }
+    #mobileModeBar .infoBtn {
+        background: none;
+        border: none;
+        color: #ff9800;
+        font-size: 1.2em;
+        box-shadow: none;
+        margin-left: 0;
+        margin-right: 0;
+        min-width: 0;
+        padding: 0 2px;
+    }
+    #canvas {
+        display: block;
+        margin: 8px auto 120px auto !important;
+        max-width: 98vw;
+        width: 98vw !important;
+        height: auto !important;
+        max-height: 50vw;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px #0006;
+        background: #222;
+        
+    }
+    #overlay, #infoOverlay {
+        left: 0 !important;
+        top: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        z-index: 4000 !important;
+        pointer-events: auto !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #infoOverlay {
+        background: rgba(0,0,0,0.35);
+        z-index: 4100 !important;
+    }
+    #infoOverlay > div {
+        max-width: 95vw;
+        font-size: 1em;
+        padding: 18px 8px 12px 8px;
+    }
+}@media (max-width: 1191px) {
+    header, #modeBar, #rightBar, #timerBar {
+        display: none !important;
+    }
+    #mobileNav {
+        display: flex !important;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 60px;
+        background: linear-gradient(90deg, #ff9800 0%, #ff2d00 100%);
+        box-shadow: 0 -2px 16px #0006;
+        z-index: 4002;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0;
+        gap: 0;
+    }
+    #mobileNav button {
+        flex: 1 1 0;
+        height: 100%;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 2em;
+        font-weight: bold;
+        border-radius: 0;
+        transition: background 0.15s;
+        cursor: pointer;
+    }
+    #mobileNav button:active,
+    #mobileNav button:focus {
+        background: rgba(255,255,255,0.08);
+        outline: none;
+    }
+    #mobileModeBar {
+        display: flex !important;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 60px;
+        height: 54px;
+        background: linear-gradient(90deg, #ff9800 0%, #ff2d00 100%);
+        box-shadow: 0 -2px 16px #0006;
+        z-index: 4001;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 0 2vw;
+        gap: 0;
+    }
+    #canvas {
+        display: block;
+        margin: 8px auto 120px auto !important;
+        max-width: 98vw;
+        width: 98vw !important;
+        height: auto !important;
+        max-height: 50vw;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px #0006;
+        background: #222;
+    }
+}
+@media (min-width: 1192px) {
+    #mobileNav, #mobileModeBar {
+        display: none !important;
+    }
+    header, #modeBar, #rightBar, #timerBar {
+        display: initial !important;
+    }
+}
+@media (max-width: 1191px) {
+    header, #modeBar, #rightBar, #timerBar {
+        display: none !important;
+    }
+    #mobileNav {
+        display: flex !important;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 60px;
+        background: linear-gradient(90deg, #ff9800 0%, #ff2d00 100%);
+        box-shadow: 0 -2px 16px #0006;
+        z-index: 4002;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0;
+        gap: 0;
+    }
+    #mobileNav button, a {
+        flex: 1 1 0;
+        height: 100%;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 2em;
+        font-weight: bold;
+        border-radius: 0;
+        transition: background 0.15s;
+        cursor: pointer;
+         color: red;
+   font-weight: bold;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size:45px;
+   -webkit-text-stroke: #eeff039a 1px;
+   text-shadow: #ffffff 1px 2px 3px;
+    }
+    #mobileNav button:active,
+    #mobileNav button:focus {
+        background: rgba(255,255,255,0.08);
+        outline: none;
+    }
+    #mobileModeBar {
+        display: flex !important;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 60px;
+        height: 54px;
+        background: linear-gradient(90deg, #ff9800 0%, #ff2d00 100%);
+        box-shadow: 0 -2px 16px #0006;
+        z-index: 4001;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 0 2vw;
+        gap: 0;
+    }
+    #mobileModeBar button, #mobileModeBar .infoBtn {
+        flex: 1 1 0;
+        margin: 0 2px;
+        height: 40px;
+        background: #fffde7;
+        color: #ff2d00;
+        border: 2px solid #ff9800;
+        border-radius: 10px;
+        font-size: 1em;
+        font-weight: bold;
+        box-shadow: 0 2px 8px #0002;
+        cursor: pointer;
+        transition: background 0.15s, color 0.15s;
+        min-width: 0;
+        padding: 0 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    #mobileModeBar button.active {
+        background: #ff9800;
+        color: #fff;
+        border-color: #ff2d00;
+    }
+    #mobileModeBar .infoBtn {
+        background: none;
+        border: none;
+        color: #ff9800;
+        font-size: 1.2em;
+        box-shadow: none;
+        margin-left: 0;
+        margin-right: 0;
+        min-width: 0;
+        padding: 0 2px;
+    }
+    #canvas {
+        display: block;
+        margin: 8px auto 120px auto !important;
+        max-width: 98vw;
+        width: 98vw !important;
+        height: auto !important;
+        max-height: 50vw;
+        border-radius: 10px;
+        box-shadow: 0 2px 12px #0006;
+        background: #222;
+    }
+    #overlay, #infoOverlay {
+        left: 0 !important;
+        top: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        z-index: 4000 !important;
+        pointer-events: auto !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #infoOverlay {
+        background: rgba(0,0,0,0.35);
+        z-index: 4100 !important;
+    }
+    #infoOverlay > div {
+        max-width: 95vw;
+        font-size: 1em;
+        padding: 18px 8px 12px 8px;
+    }
+}
+@media (min-width: 1192px) {
+    #mobileNav, #mobileModeBar {
+        display: none !important;
+    }
+    header, #modeBar, #rightBar, #timerBar {
+        display: initial !important;
+    }
+}
+#helpOverlay {
+    z-index: 5000 !important;
+}
+#helpOverlay > div {
+    width: min(98vw, 600px) !important;
+    max-width: 98vw !important;
+    font-size: 1.1em !important;
+}
+@media (max-width: 1191px) {
+    #timerBar {
+        display: block !important;
+        position: static !important;
+        margin: 12px auto 0 auto !important;
+        width: 70vw !important;
+        max-width: 70vw !important;
+        font-size: 2em;
+        font-weight: bold;
+        color: #e53935;
+        background: #fff;
+        border: 2px solid #e53935;
+        border-radius: 16px;
+        padding: 10px 0;
+        text-align: center;
+        z-index: 4100;
+        box-shadow: 0 2px 16px #0003;
+        
+    }
+}
+/* In game.css */
+#charBtnMobile {
+    width: 70vw;
+    max-width: 340px;
+    display: block;
+    margin: 18px auto 0 auto;
+    
+    
+}
+@media (min-width: 1192px) {
+    #charBtnMobile {
+        display: none !important;
+    }
+}
+a {
+   color: red;
+   font-weight: bold;
+   font-family: Arial, Helvetica, sans-serif;
+   font-size:45px;
+   -webkit-text-stroke: #eeff039a 1px;
+   text-shadow: #ffffff 1px 2px 3px;
+}

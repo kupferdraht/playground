@@ -1,0 +1,142 @@
+/*CSS FÜR PC VERSION!!!*/
+
+
+body{
+    margin:0;
+    padding:0;
+    height: 100%;
+    width:100%;
+    background-color: rgba(255, 145, 0, 0.959);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#canvas {
+    cursor: pointer;
+   
+}
+header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    height: 56px;
+    background: 
+        linear-gradient(
+            to top, 
+            rgba(255, 167, 3, 0.95) 0%, 
+            rgba(255, 167, 3, 0.25) 80%, 
+            rgba(255, 167, 3, 0) 100%
+        ),
+        linear-gradient(190deg, #1976d2 40%, #ffa703 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 -2px 16px #0004;
+    padding: 0 32px;
+    font-size: 1.2em;
+    clip-path: polygon(0 0, 65% 0, 100% 100%, 0% 100%);
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header .logo {
+    font-weight: bold;
+    font-size: 1.6em;
+    letter-spacing: 2px;
+    /* Farbverlauf für feurigen Lava-Effekt */
+    background: linear-gradient(90deg, #ff2d00 0%, #ff9800 40%, #ffd600 70%, #ff2d00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-emphasis-color: transparent;
+    text-shadow:
+        0 2px 8px #ff3300e1,
+        0 0px 2px #b71c1ccc,
+        0 0px 16px #ff6600a9;
+        -webkit-text-stroke: black 1px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+cursor:pointer;
+text-decoration: none;
+}
+header .logo:hover{
+        background: linear-gradient(90deg, #ffd600 0%, #ff9800 50%, #ff2d00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    text-shadow:
+        0 4px 24px #ffd600cc,
+        0 0px 12px #ff9800cc,
+        0 0px 32px #ff2d00cc;
+    -webkit-text-stroke: 1.4px #000;
+    
+    outline: none;
+    box-shadow: 0 4px 32px #ff980099, 0 0px 32px #ffd60077;
+    cursor:pointer;
+
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    margin-left: 32px;
+}
+
+header .nav-links {
+    display: flex;
+    gap: 24px;
+}
+
+header .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.08em;
+    letter-spacing: 1px;
+    padding: 4px 14px;
+    border-radius: 7px;
+    position: relative;
+    z-index: 10;
+    /* Kräftiger Lava-Farbverlauf wie beim Logo */
+    background: linear-gradient(90deg, #ff2d00 0%, #ff9800 40%, #ffd600 70%, #ff2d00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    /* Kräftiger Glow und Outline */
+    text-shadow:
+        0 2px 12px #ff3300e1,
+        0 0px 2px #b71c1ccc,
+        0 0px 18px #ff6600a9;
+    -webkit-text-stroke: 1.2px #111;
+    
+    box-shadow: 0 2px 18px #ff980055;
+    transition: 
+        text-shadow 0.18s,
+        background 0.18s,
+        box-shadow 0.18s;
+}
+
+header .nav-links a:hover, 
+header .nav-links a:focus {
+    background: linear-gradient(90deg, #ffd600 0%, #ff9800 50%, #ff2d00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    text-shadow:
+        0 4px 24px #ffd600cc,
+        0 0px 12px #ff9800cc,
+        0 0px 32px #ff2d00cc;
+    -webkit-text-stroke: 1.4px #000;
+    
+    outline: none;
+    box-shadow: 0 4px 32px #ff980099, 0 0px 32px #ffd60077;
+    cursor:pointer;
+}
+@media (min-width: 1192px) {
+    #mobileNav, #mobileModeBar {
+        display: none !important;
+    }
+}
