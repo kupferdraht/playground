@@ -19,8 +19,8 @@ const CACHE_URLS = [
   '/playground/Thefloorislava/game%20copy.css',
   '/playground/Thefloorislava/game.js',
   '/playground/Thefloorislava/game%20copy.js',
-  //sounds
-   '/playground/sound/start.mp3',
+  // Sounds
+  '/playground/sound/start.mp3',
   '/playground/sound/win.mp3',
   '/playground/sound/lose.mp3',
   '/playground/sound/backgroundsound1.mp3',
@@ -28,7 +28,7 @@ const CACHE_URLS = [
   '/playground/sound/backgroundsound3.mp3',
   '/playground/sound/backgroundsound4.mp3',
   '/playground/sound/backgroundsound5.mp3',
-  // lavaspiel Bilder meme gifs
+  // Lava-Spiel Bilder und Gifs
   '/playground/Thefloorislava/img/lava.gif',
   '/playground/Thefloorislava/img/lava1.gif',
   '/playground/Thefloorislava/img/lava2.gif',
@@ -36,28 +36,36 @@ const CACHE_URLS = [
   '/playground/Thefloorislava/img/lava4.gif',
   '/playground/Thefloorislava/img/lava5.gif',
   '/playground/Thefloorislava/img/lava6.gif',
-// lava Bilder
-'/playground/Thefloorislava/img/playercat.png',
-'/playground/Thefloorislava/img/playerclown.png',
-'/playground/Thefloorislava/img/playerdeer.png',
-'/playground/Thefloorislava/img/playermonkey.png',
-'/playground/Thefloorislava/img/playerperson.png',
-'/playground/Thefloorislava/img/playerpig.gif',
-  // ggf. weitere wichtige Dateien/Assets ergänzen
+  '/playground/Thefloorislava/img/playercat.png',
+  '/playground/Thefloorislava/img/playerclown.png',
+  '/playground/Thefloorislava/img/playerdeer.png',
+  '/playground/Thefloorislava/img/playermonkey.png',
+  '/playground/Thefloorislava/img/playerperson.png',
+  '/playground/Thefloorislava/img/playerpig.gif'
 ];
 
 self.addEventListener('install', event => {
+  console.log('[Service Worker] Install');
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(CACHE_URLS))
+    caches.open(CACHE_NAME).then(cache => {
+      console.log('[Service Worker] Caching assets...');
+      return cache.addAll(CACHE_URLS);
+    })
   );
   self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
+  console.log('[Service Worker] Activate');
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
-        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => {
+            console.log('[Service Worker] Deleting old cache:', key);
+            return caches.delete(key);
+          })
       )
     )
   );
@@ -65,11 +73,19 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  // Nur GET-Anfragen cachen
   if (event.request.method !== 'GET') return;
+
   event.respondWith(
-    caches.match(event.request, {ignoreSearch: true}).then(response => {
-      return response || fetch(event.request);
+    caches.match(event.request, { ignoreSearch: true }).then(response => {
+      return (
+        response ||
+        fetch(event.request).catch(() => {
+          // Fallback für HTML-Seiten
+          if (event.request.headers.get('accept')?.includes('text/html')) {
+            return caches.match('/playground/index.html');
+          }
+        })
+      );
     })
   );
 });
