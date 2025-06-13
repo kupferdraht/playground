@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt & Impressum | Playground</title>
+    <link id="responsive-style" rel="stylesheet" href="style-pc.css">
+   <link rel="manifest" href="/Playground/manifest.webmanifest">
+<meta name="theme-color" content="#ffb300">
+   <script>
+    function setResponsiveStyle() {
+        const style = document.getElementById('responsive-style');
+        if(window.innerWidth <= 900) {
+            style.href = "style-mobile.css";
+        } else {
+            style.href = "style-pc.css";
+        }
+    }
+    window.addEventListener('resize', setResponsiveStyle);
+    window.addEventListener('DOMContentLoaded', setResponsiveStyle);
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="logo" href="index.html" >Playground 🏠</a>
+            <!-- Hamburger-Menü nur für mobile CSS sichtbar -->
+            <button class="menu-toggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul>
+                <li><a href="kontakt.html">✉️Kontaktformular✉️</a></li>
+                <li><a href="über-mich.html">🪪 Über mich 🪪</a></li>
+                <li><a href="mehr.html">🕹️mehr von mir🕹️</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+       <section class="contact-box">
+    <h1>Kontakt & Hinweise</h1>
+    <p>
+        Bei Fragen, Hinweisen, Verbesserungsvorschlägen oder Urheberrechtsanliegen kannst du mich jederzeit erreichen:<br><br>
+        <strong>E-Mail:</strong> <a href="mailto:kupferdraht@gmail.com">kupferdraht@gmail.com</a><br>
+        <strong>Betreiber:</strong>Kupferdraht (Pseudonym)<br>
+        <strong>Standort:</strong> Entenhausen, Deutschland (Pseudo Standort)<br>
+        <br>
+        <em>
+            Bitte informiere mich per E-Mail, falls du einen Urheberrechtsverstoß entdeckst – ich entferne betroffene Inhalte umgehend.<br>
+            Die Nutzung dieser Seite ist kostenlos und es werden keinerlei personenbezogene Daten gespeichert oder ausgewertet.<br>
+            Über konstruktive Vorschläge und nette Nachrichten freue ich mich immer!
+        </em>
+    </p>
+    <div class="disclaimer-box">
+        <h2>Haftung & Disclaimer</h2>
+        <p>
+            Trotz sorgfältiger Kontrolle, ständiger Prüfung und Aktualisierung der Informationen können wir keine Gewähr für die Inhalte der Website übernehmen. Trotz Anwendung größter Sorgfalt können wir nicht ausschließen, dass sich einzelne Daten zwischenzeitlich geändert haben. Eine Haftung wird daher für Aktualität, Vollständigkeit und Richtigkeit der auf der Website dargestellten Informationen nicht übernommen.<br><br>
+           Die Anwendung unserer Website erfolgt auf eigene Gefahr. Mit der reinen Nutzung unserer Website kommt keinerlei Vertragsverhältnis zwischen dem Nutzer und uns zustande. Wir übernehmen keine Haftung bei technischen Problemen der Website.
+        </p>
+        <h2>Externe Links</h2>
+        <p>
+            Diese Website könnte Verknüpfungen zu Websites Dritter ("externe Links") enthalten (stand: 11.06.2025 keine externen Links geplant jedoch zukünftig nicht ausgeschlossen).<br> Insbesondere sind wir nicht verantwortlich und haften auch nicht für den Inhalt solcher Websites, die durch Verlinkung erreicht werden. <br> Das Setzen von externen Links bedeutet nicht, dass wir die hinter dem Verweis oder Link liegenden Inhalte zu Eigen machen. <br> Wir bemühen uns Verlinkungen aktuell zu halten.
+        </p>
+    </div>
+     <div class="impressum-hinweis-box">
+        <h2>Hinweis zur Impressumspflicht</h2>
+        <p>
+            Gemäß § 5 Telemediengesetz (TMG) besteht die Pflicht zur Anbieterkennzeichnung (Impressum) nur für geschäftsmäßige, in der Regel gegen Entgelt angebotene Telemedien. Diese Website dient ausschließlich privaten und nicht geschäftsmäßigen Zwecken. Sie richtet sich ausschließlich an einen geschlossenen Kreis von Freunden und Familienangehörigen und verfolgt keinerlei kommerzielle Interessen. Es finden weder Transaktionen noch Werbemaßnahmen statt.<br><br>
+            Daher entfällt gemäß § 5 TMG die Verpflichtung zur Bereitstellung eines Impressums.
+        </p>
+    </div>
+</section>
+    </main>
+     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var toggle = document.querySelector('.menu-toggle');
+        var navUl = document.querySelector('nav ul');
+        if(toggle && navUl) {
+            toggle.addEventListener('click', function() {
+                navUl.classList.toggle('open');
+            });
+            navUl.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navUl.classList.remove('open');
+                });
+            });
+        }
+    });
+    </script>
+    <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/playground/service-worker.js');
+  });
+}
+</script>
+</body>
+</html>

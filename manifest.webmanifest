@@ -1,0 +1,22 @@
+{
+  "name": "Playground",
+  "short_name": "Playground",
+  "start_url": "/playground/index.html",
+  "scope": "/playground/",
+  "display": "standalone",
+  "background_color": "#fb83ff",
+  "theme_color": "#ffb300",
+  "description": "Spielwiese von Kupferdraht",
+  "icons": [
+    {
+      "src": "/playground/Bilder/spielicon.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/playground/Bilder/spielicon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
+  ]
+}
