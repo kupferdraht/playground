@@ -21,8 +21,8 @@
       css.href = 'game.css';
       js.src = 'game.js';
     } else {
-      css.href = 'game copy.css';
-      js.src = 'game copy.js';
+      css.href = 'game-copy.css';
+      js.src = 'game-copy.js';
     }
     document.head.appendChild(css);
     js.onload = function() {
@@ -36,7 +36,7 @@
   window.addEventListener('resize', function() {
     if (
       (window.innerWidth <= 1191 && !document.querySelector('link[href="game.css"]')) ||
-      (window.innerWidth > 1191 && !document.querySelector('link[href="game copy.css"]'))
+      (window.innerWidth > 1191 && !document.querySelector('link[href="game-copy.css"]'))
     ) {
       location.reload();
     }
