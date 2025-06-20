@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>glücksfarbe</title>
+  <link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#ffb300">
+  <link id="responsive-style" rel="stylesheet" href="Glücksfarbe-desktop.css">
+  
+  <script>
+    function setResponsiveAssets() {
+      const style = document.getElementById('responsive-style');
+
+      if (window.innerWidth <= 900) {
+        style.href = "Glücksfarbe-mobile.css";
+        loadScript("Glücksfarbe-mobile.js");
+      } else {
+        style.href = "Glücksfarbe-desktop.css";
+        loadScript("Glücksfarbe-desktop.js");
+      }
+    }
+
+    function loadScript(src) {
+      const existingScript = document.getElementById("mode-script");
+      if (existingScript) existingScript.remove(); // vorheriges Script entfernen
+
+      const script = document.createElement('script');
+      script.src = src;
+      script.id = "mode-script";
+      script.defer = true;
+      document.body.appendChild(script);
+    }
+
+    window.addEventListener('DOMContentLoaded', setResponsiveAssets);
+    window.addEventListener('resize', setResponsiveAssets);
+  </script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a class="logo" href="../index.html">🎨 Glücksfarbe 🎨</a>
+      <button class="menu-toggle" aria-label="Menü öffnen">
+        <span>❓</span>
+      </button>
+      <ul>
+        <li><a href="#infos">Hilfe❓</a></li>
+        <li><a href="../index.html">🏠playground🏠</a></li>
+        <li><a href="../mehr.html">🕹️mehr von mir🕹️</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <nav>
+    <ul id="mode-wrapper">
+      <li><p class="modipc" id="mode-1">Modus 1</p></li>
+      <li><p class="modipc" id="mode-2">Modus 2</p></li>
+      <li><p class="modipc" id="mode-3">Modus 3</p></li>
+    </ul>
+  </nav>
+
+ <p class="counter" id="counter">überlebte Runden:0</p>
+      <p  class="Rekord" id="Rekord">Rekord: <span id="rekordZahl">0</span></p>
+    
+
+  <div class="canvas-wrapper">
+  <canvas id="Canvas"></canvas>
+  </div>
+<div class="modemobile-wrapper">
+  <div class="modemobile" id="mode-1">Modus 1</div>
+  <div class="modemobile" id="mode-2">Modus 2</div>
+  <div class="modemobile" id="mode-3">Modus 3</div>
+</div>
+<p class="Infobox" id="infos"><strong>ℹ️Infosℹ️: </strong>
+   <br> 🥇Modus 1🥇: Wähle eine Farbe und hoffe, dass sie nicht den Hintergrund füllt. 
+   <br> 🥈Modus 2🥈: Wähle eine Farbe und hoffe, dass sie nicht den Hintergrund füllt. <strong> Du darfst erst eine Farbe wählen, wenn der Pfeil auf Grün zeigt</strong>
+  <br> 🥉Modus 3🥉:  Wähle eine Farbe und hoffe, dass sie nicht den Hintergrund füllt. Du darfst erst eine Farbe wählen, wenn der Pfeil auf Grün zeigt. <strong> Der Pfeil wird alle 2 Runden etwas schneller!</strong>
+</p>
+<div class="cat-container">
+  <img class="catunten" src="catunten.png" alt="cat">
+  <div class="cat-text"> 😻 Miau! 🐈‍⬛
+    🎮 Playground 🎮 <br> by <a href="../kontakt.html">kupferdraht</a>👨‍💻</div>
+</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.querySelector('.menu-toggle');
+      const navUl = document.querySelector('nav ul');
+
+      if (toggle && navUl) {
+        toggle.addEventListener('click', function (event) {
+          event.stopPropagation();
+          navUl.classList.toggle('open');
+        });
+
+        navUl.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            navUl.classList.remove('open');
+          });
+        });
+
+        document.addEventListener('click', function (event) {
+          if (navUl.classList.contains('open') &&
+              !navUl.contains(event.target) &&
+              !toggle.contains(event.target)) {
+            navUl.classList.remove('open');
+          }
+        });
+      }
+    });
+  </script>
+  <script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('../service-worker.js');
+  });
+}
+</script>
+</body>
+</html>

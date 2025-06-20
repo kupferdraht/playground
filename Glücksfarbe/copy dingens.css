@@ -1,0 +1,189 @@
+body {
+    /*background: url(Bilder/oblakao.gif) no-repeat center center fixed;*/
+    background-size: cover;
+    padding-top: 20px;
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+}
+header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+     background: linear-gradient(90deg,
+  rgba(255, 215, 0, 0.6) 0%,
+  rgba(76, 175, 80, 0.6) 25%,
+  rgba(33, 150, 243, 0.6) 50%,
+  rgba(233, 30, 99, 0.6) 75%,
+  rgba(255, 152, 0, 0.6) 100%
+);
+    padding: 0.3rem 0.3rem;
+    color: #fff;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+    box-shadow: 0 4px 16px rgba(255, 182, 193, 0.3);
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    letter-spacing: 1px;
+    height: 48px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.2rem;
+    height: 48px;
+}
+
+.logo {
+    font-size:auto;
+    padding: 0.05em 0.3em;
+    border-radius: 9px;
+     text-shadow: 2px 2px 0 #8dff76, 4px 4px 0 #fff;
+      letter-spacing: 2px;
+    margin-right: 0.5rem;
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    background: #fff176;
+     border: 2px dashed #001aff;
+    color: #ff69b4;
+    font-weight: bold;
+    user-select: none;
+    max-height:48px;
+    text-decoration-line: none;
+   overflow-wrap: anywhere;
+}
+
+.logo:active{
+     background:linear-gradient(90deg,
+  rgba(255, 215, 0, 0.5) 0%,
+  rgba(76, 175, 80, 0.5) 25%,
+  rgba(33, 150, 243, 0.5) 50%,
+  rgba(233, 30, 99, 0.5) 75%,
+  rgba(255, 153, 0, 0.5) 100%
+);
+    color: #ff69b4;
+    box-shadow: 4px 4px 0 #fff176;
+    outline: none;
+    transform: scale(1.05);
+    
+}
+
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background: #fff176;
+    border: 2px dashed #001aff;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 2rem;
+    z-index: 1100;
+    transition: background 0.2s;
+    padding: 0;
+}
+.menu-toggle:active{
+       background:linear-gradient(90deg,
+  rgba(255, 215, 0, 0.5) 0%,
+  rgba(76, 175, 80, 0.5) 25%,
+  rgba(33, 150, 243, 0.5) 50%,
+  rgba(233, 30, 99, 0.5) 75%,
+  rgba(255, 153, 0, 0.5) 100%
+);
+}
+
+nav ul {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 48px;
+    right: 0.5rem;
+    min-width: 120px;
+    min-height: 100px;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    background: #00fff21e;
+    border: 2px dashed #001aff;
+    box-shadow: 0 4px 12px rgba(255,182,193,0.13);
+    gap: 1rem;
+    list-style: none;
+    z-index: 2100;
+    animation: dropdown 0.2s;
+}
+nav ul.open {
+    display: flex;
+}
+nav ul li a {
+    font-size: 0.8rem;
+    padding: 0.4em 0.7em;
+    margin: 0.1em 0;
+    border-radius: 10px;
+    background: #ffb6c1;
+    color: #ff69b4;
+   border: 2px dashed #001aff;
+    box-shadow: 1px 1px 0 #ffe082;
+    transition:  color 0.13s, transform 0.07s;
+    text-decoration-line: none;
+    
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+}
+nav ul li a:active {
+     background:linear-gradient(90deg,
+  rgba(255, 215, 0, 0.5) 0%,
+  rgba(76, 175, 80, 0.5) 25%,
+  rgba(33, 150, 243, 0.5) 50%,
+  rgba(233, 30, 99, 0.5) 75%,
+  rgba(255, 153, 0, 0.5) 100%
+);
+   
+    color: #ffffff;
+   
+    box-shadow: 4px 4px 0 #fff176;
+    outline: none;
+    transform: scale(1.05);
+    outline: none;
+}
+@keyframes dropdown {
+    from { opacity: 0; transform: translateY(-8px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+.menu-toggle {
+  display: block;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  margin-top: 10px;
+}
+nav ul { /* primär versteckt, mobil im toggle */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+nav ul.open {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: #222;
+}
+nav ul:not(.open) {
+  display: none;
+}
+nav ul li a {
+  display: block;
+  padding: 8px 12px;
+  background: #333;
+  color: #fff;
+  border-radius: 12px;
+  text-shadow: 0 0 3px #0ff;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.3s;
+}
+nav ul li a:hover {
+  background: #555;
+  transform: scale(1.05);
+}
+
+
+
