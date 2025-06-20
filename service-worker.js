@@ -42,7 +42,14 @@ const CACHE_URLS = [
   '/playground/Thefloorislava/img/playermonkey.png',
   '/playground/Thefloorislava/img/playerperson.png',
   '/playground/Thefloorislava/img/playerpig.gif',
-  // Dummy-Favicon zur Vermeidung von 404s
+  // Glücksfarben game
+   '/playground/Glücksfarbe/Glücksfarbe.html',
+    '/playground/Glücksfarbe/Glücksfarbe-desktop.css',
+    '/playground/Glücksfarbe/Glücksfarbe-mobile.css',
+    '/playground/Glücksfarbe/Glücksfarbe-desktop.js',
+    '/playground/Glücksfarbe/Glücksfarbe-mobile.js',
+  '/playground/Glücksfarbe/catunten.png',
+    // Dummy-Favicon zur Vermeidung von 404s
   '/playground/favicon.ico'
 ];
 
