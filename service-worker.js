@@ -10,6 +10,7 @@ const CACHE_URLS = [
   '/playground/Bilder/spielicon.png',
   '/playground/Bilder/oblakao.gif',
   '/playground/Bilder/spiel1.webp',
+  '/playground/Bilder/spiel2.jpg',
   '/playground/kontakt.html',
   '/playground/mehr.html',
   '/playground/über-mich.html',
