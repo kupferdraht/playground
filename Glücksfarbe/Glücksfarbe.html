@@ -9,33 +9,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
   <link id="responsive-style" rel="stylesheet" href="Glücksfarbe-desktop.css">
   <link rel="icon" href="../Bilder/spielicon.png" type="image/png">
-  <script>
-    function setResponsiveAssets() {
-      const style = document.getElementById('responsive-style');
+ <script>
+  function setResponsiveAssets() {
+    const style = document.getElementById('responsive-style');
 
-      if (window.innerWidth <= 900) {
-        style.href = "Glücksfarbe-mobile.css";
-        loadScript("Glücksfarbe-mobile.js");
-      } else {
-        style.href = "Glücksfarbe-desktop.css";
-        loadScript("Glücksfarbe-desktop.js");
-      }
+    if (window.matchMedia("(max-width: 900px)").matches) {
+      style.href = "Glücksfarbe-mobile.css";
+      loadScript("Glücksfarbe-mobile.js");
+    } else {
+      style.href = "Glücksfarbe-desktop.css";
+      loadScript("Glücksfarbe-desktop.js");
     }
+  }
 
-    function loadScript(src) {
-      const existingScript = document.getElementById("mode-script");
-      if (existingScript) existingScript.remove(); // vorheriges Script entfernen
+  function loadScript(src) {
+    const existingScript = document.getElementById("mode-script");
+    if (existingScript) existingScript.remove();
 
-      const script = document.createElement('script');
-      script.src = src;
-      script.id = "mode-script";
-      script.defer = true;
-      document.body.appendChild(script);
-    }
+    const script = document.createElement('script');
+    script.src = src;
+    script.id = "mode-script";
+    script.defer = true;
+    document.body.appendChild(script);
+  }
 
-    window.addEventListener('DOMContentLoaded', setResponsiveAssets);
-    window.addEventListener('resize', setResponsiveAssets);
-  </script>
+  window.addEventListener('load', setResponsiveAssets);
+  window.addEventListener('resize', setResponsiveAssets);
+</script>
+
 </head>
 
 <body>
